@@ -15,13 +15,13 @@ const getCanditatosById = async (id) => {
     return result.rows[0]
 }
 
-const createCandidatos = async (nome, cpf, nivel_escolaridade, id_vaga) => {
-    const result = await pool.query("INSERT INTO candidato (nome, cpf, nivel_escolaridade, id_vaga) VALUES ($1, $2, $3, $4) RETURNING *", [nome, cpf, nivel_escolaridade, id_vaga])
+const createCandidatos = async (nome, cpf, nivel_escolaridade, id_vaga, photo) => {
+    const result = await pool.query("INSERT INTO candidato (nome, cpf, nivel_escolaridade, id_vaga, photo) VALUES ($1, $2, $3, $4, $5) RETURNING *", [nome, cpf, nivel_escolaridade, id_vaga, photo])
     return result.rows
 }
 
-const updateCandidatos = async (nome, cpf, nivel_escolaridade, id_vaga, id) => {
-    const result = await pool.query("UPDATE candidato SET nome = $1, cpf = $2, nivel_escolaridade = $3, id_vaga = $4 WHERE id = $5 RETURNING *", [nome, cpf, nivel_escolaridade, id_vaga, id])
+const updateCandidatos = async (nome, cpf, nivel_escolaridade, id_vaga, photo, id) => {
+    const result = await pool.query("UPDATE candidato SET nome = $1, cpf = $2, nivel_escolaridade = $3, id_vaga = $4, photo = $5 WHERE id = $6 RETURNING *", [nome, cpf, nivel_escolaridade, id_vaga, photo, id])
     return result.rows
 }
 

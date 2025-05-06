@@ -24,9 +24,10 @@ const getCandidatoById = async (req, res) => {
 const createCandidatos = async (req, res) => {
     try {
         const {nome, cpf, nivel_escolaridade, id_vaga} = req.body
-        const newCandidato = await candidatoModel.createCandidatos(nome, cpf, nivel_escolaridade, id_vaga)
+        const photo = req.file ? req.file.filename : null;
+        const newCandidato = await candidatoModel.createCandidatos(nome, cpf, nivel_escolaridade, id_vaga, photo)
         res.status(200).json(newCandidato)
-    } catch {
+    } catch (error){
         console.log(error)
         res.status(500).json({message:"erro ao criar candidato"})
     }
@@ -35,7 +36,8 @@ const createCandidatos = async (req, res) => {
 const updateCandidatos = async (req, res) => {
     try {
         const {nome, cpf, nivel_escolaridade, id_vaga} = req.body
-        const updCandidatos = await candidatoModel.updateCandidatos(nome, cpf, nivel_escolaridade, id_vaga, req.params.id)
+        const photo = req.file ? req.file.filename : null;
+        const updCandidatos = await candidatoModel.updateCandidatos(nome, cpf, nivel_escolaridade, id_vaga, photo, req.params.id)
         res.status(200).json(updCandidatos)
     } catch (error) {
         console.log(error)
