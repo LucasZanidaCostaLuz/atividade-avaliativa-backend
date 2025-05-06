@@ -23,7 +23,8 @@ const getVagaById = async (req, res) => {
 const createVaga = async (req, res) => {
     try {
         const {nome, numero_vagas} = req.body
-        const newVaga = await vagaModels.createVaga(nome, numero_vagas)
+        const photo = req.file ? req.file.filename : null;
+        const newVaga = await vagaModels.createVaga(nome, numero_vagas, photo)
         res.status(200).json(newVaga)
     } catch {
         console.log(error)
@@ -34,7 +35,8 @@ const createVaga = async (req, res) => {
 const updateVaga = async (req, res) => {
     try {
         const {nome, numero_vagas} = req.body
-        const updVaga = await vagaModels.updateVaga(nome, numero_vagas, req.params.id)
+        const photo = req.file ? req.file.filename : null;
+        const updVaga = await vagaModels.updateVaga(nome, numero_vagas, photo, req.params.id)
         res.status(200).json(updVaga)
     } catch (error) {
         console.log(error)

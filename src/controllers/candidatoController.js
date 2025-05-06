@@ -14,7 +14,6 @@ const getAllCandidatos = async (req, res) => {
 const getCandidatoById = async (req, res) => {
     try {
         const candidatos = await candidatoModel.getCanditatosById(req.params.id)
-        console.log(candidatos)
         res.status(200).json(candidatos)
     } catch (error) {
         console.log(error)

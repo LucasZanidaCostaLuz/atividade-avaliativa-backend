@@ -21,7 +21,7 @@ const createCandidatos = async (nome, cpf, nivel_escolaridade, id_vaga) => {
 }
 
 const updateCandidatos = async (nome, cpf, nivel_escolaridade, id_vaga, id) => {
-    const result = await pool.query("UPDATE candidato SET nome = $1, cpf = $2, nivel_escolaridade = $3, id_vaga = $4 WHERE id = $5", [nome, cpf, nivel_escolaridade, id_vaga, id])
+    const result = await pool.query("UPDATE candidato SET nome = $1, cpf = $2, nivel_escolaridade = $3, id_vaga = $4 WHERE id = $5 RETURNING *", [nome, cpf, nivel_escolaridade, id_vaga, id])
     return result.rows
 }
 

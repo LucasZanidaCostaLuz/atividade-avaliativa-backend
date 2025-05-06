@@ -27,3 +27,5 @@ INSERT INTO candidato(nome, cpf, nivel_escolaridade, id_vaga) VALUES
 ('Mateus', '16463697001', 'Superior', 3),
 ('Raphael', '65931109064', 'Mestrado', 2),
 ('Maria', '88018837066', 'Doutorado', 4);
+
+ALTER TABLE vaga ADD COLUMN photo TEXT;

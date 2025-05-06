@@ -10,13 +10,13 @@ const getVagaById = async (id) => {
     return result.rows[0]
 }
 
-const createVaga = async (nome, numero_vagas) => {
-    const result = await pool.query("INSERT INTO vaga (nome, numero_vagas) VALUES ($1, $2) RETURNING *", [nome, numero_vagas])
+const createVaga = async (nome, numero_vagas, photo) => {
+    const result = await pool.query("INSERT INTO vaga (nome, numero_vagas, photo) VALUES ($1, $2, $3) RETURNING *", [nome, numero_vagas, photo])
     return result.rows
 }
 
-const updateVaga = async (nome, numero_vagas, id) => {
-    const result = await pool.query("UPDATE vaga SET nome = $1, numero_vagas = $2 WHERE id = $3", [nome, numero_vagas, id])
+const updateVaga = async (nome, numero_vagas, photo, id) => {
+    const result = await pool.query("UPDATE vaga SET nome = $1, numero_vagas = $2, photo = $3 WHERE id = $4 RETURNING *", [nome, numero_vagas, photo, id])
     return result.rows
 }
 
